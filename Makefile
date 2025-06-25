@@ -1,5 +1,5 @@
 #Ayuda
-.PHONY: help clean lint
+.PHONY: help clean lint etl
 
 help:
 	@echo "Tareas disponibles"
@@ -18,4 +18,4 @@ lint:
 	
 etl: clean
 	@echo "Ejecutando carga de datos.."
-	PYTHONPATH=src poetry run python -m ETL.pipeline
+	PYTHONPATH=src poetry run python -m ETL.extract
