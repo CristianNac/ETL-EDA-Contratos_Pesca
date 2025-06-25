@@ -1,11 +1,11 @@
 #Ayuda
-.PHONY: help clean lint etl
+.PHONY: help clean lint extract
 
 help:
 	@echo "Tareas disponibles"
-	@echo "make clean  ->   Borra cache de python y ruff"
-	@echo "make lint   ->   Revision del codigo con ruff"
-	@echo "make etl    ->   Carga la data desde el csv a postgresql"
+	@echo "make clean      ->   Borra cache de python y ruff"
+	@echo "make lint       ->   Revision del codigo con ruff"
+	@echo "make extract    ->   Carga la data desde los csv"
 
 clean:
 	@echo "Limpiando caches"
@@ -16,6 +16,6 @@ lint:
 	@echo "Ejecutando ruff"
 	poetry run ruff check src
 	
-etl: clean
+extract: clean
 	@echo "Ejecutando carga de datos.."
 	PYTHONPATH=src poetry run python -m ETL.extract
