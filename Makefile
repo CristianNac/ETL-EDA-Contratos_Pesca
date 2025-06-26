@@ -6,6 +6,7 @@ help:
 	@echo "make clean      ->   Borra cache de python y ruff"
 	@echo "make lint       ->   Revision del codigo con ruff"
 	@echo "make extract    ->   Carga la data desde los csv"
+	@echo "make transform  ->   Carga y transforma la data"
 
 clean:
 	@echo "Limpiando caches"
@@ -19,3 +20,7 @@ lint:
 extract: clean
 	@echo "Ejecutando carga de datos.."
 	PYTHONPATH=src poetry run python -m ETL.extract
+
+transform: clean
+	@echo "Ejecutando la carga y transformacion de datos.."
+	PYTHONPATH=src poetry run python -m ETL.transform
