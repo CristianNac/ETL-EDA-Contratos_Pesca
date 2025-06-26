@@ -7,6 +7,8 @@ help:
 	@echo "make lint       ->   Revision del codigo con ruff"
 	@echo "make extract    ->   Carga la data desde los csv"
 	@echo "make transform  ->   Carga y transforma la data"
+	@echo "make etl        ->   Carga, transforma y envia la data a postgres"
+	
 
 clean:
 	@echo "Limpiando caches"
@@ -24,3 +26,7 @@ extract: clean
 transform: clean
 	@echo "Ejecutando la carga y transformacion de datos.."
 	PYTHONPATH=src poetry run python -m ETL.transform
+
+etl: clean
+	@echo "Ejecutan el proceso ETL completo"
+	PYTHONPATH=src poetry run python -m ETL.persist
