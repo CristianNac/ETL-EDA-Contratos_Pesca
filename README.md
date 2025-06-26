@@ -37,7 +37,7 @@ analisis-contratos-pesca/
 
 1. **Clonar el repositorio**
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/CristianNac/ETL-EDA-Contratos_Pesca.git
    cd analisis-contratos-pesca
    ```
 
