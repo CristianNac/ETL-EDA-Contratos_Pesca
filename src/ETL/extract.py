@@ -1,9 +1,36 @@
+"""
+Módulo de extracción de datos para el análisis de contratos de pesca.
+
+Este módulo se encarga de cargar los datos históricos de empleo en plantas
+de procesamiento pesquero desde archivos CSV del período 2005-2011.
+"""
+
 import pandas as pd
 
 from config import datasettings
 
 
-def load_data()->pd.DataFrame:
+def load_data() -> tuple[pd.DataFrame, ...]:
+    """
+    Carga los datos de empleo en plantas de procesamiento pesquero.
+    
+    Lee los archivos CSV correspondientes a los años 2005-2011 con datos
+    de empleo en plantas de procesamiento pesquero. Cada archivo utiliza
+    encoding latin-1 y separador punto y coma.
+    
+    Returns:
+        tuple: Tupla con 7 DataFrames correspondientes a los años 2005-2011.
+               Cada DataFrame contiene los datos de empleo de un año específico.
+    
+    Raises:
+        FileNotFoundError: Si algún archivo CSV no se encuentra.
+        pd.errors.EmptyDataError: Si algún archivo está vacío.
+        UnicodeDecodeError: Si hay problemas con el encoding latin-1.
+    
+    Example:
+        >>> df_2005, df_2006, *otros = load_data()
+        >>> print(f"Registros 2005: {len(df_2005)}")
+    """
 
     df = pd.read_csv(f'{datasettings.data_directory}/'
                      f'{datasettings.data_2005}',
@@ -44,5 +71,3 @@ def load_data()->pd.DataFrame:
     
     return df, df2, df3, df4, df5, df6, df7
 
-df, df2, df3, df4, df5, df6, df7 = load_data()
-print(df7.head())   
