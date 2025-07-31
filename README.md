@@ -1,10 +1,10 @@
 # Análisis de Contratos de Pesca
 
-Proyecto de análisis de datos sobre empleo en plantas de procesamiento pesquero en Chile (2005-2011).
+Proyecto de **EDA (Análisis Exploratorio de Datos)** y **ETL (Extract, Transform, Load)** sobre empleo en plantas de procesamiento pesquero en Chile (2005-2011).
 
 ## 📋 Descripción
 
-Este proyecto analiza los datos históricos de empleo en plantas de procesamiento pesquero, proporcionando insights sobre la evolución del sector pesquero chileno durante el período 2005-2011.
+Este proyecto combina un pipeline ETL completo para procesar datos históricos de empleo en plantas de procesamiento pesquero, junto con un análisis exploratorio detallado que proporciona insights sobre la evolución del sector pesquero chileno durante el período 2005-2011.
 
 ## 🏗️ Estructura del Proyecto
 
@@ -14,13 +14,16 @@ analisis-contratos-pesca/
 │   ├── config/                   # Configuraciones
 │   │   ├── data.py              # Configuración de datos
 │   │   └── db.py                # Configuración de base de datos
-│   └── ETL/                     # Pipeline de datos
+│   └── ETL/                     # Pipeline ETL
 │       ├── data/                # Archivos CSV (2005-2011)
 │       ├── extract.py           # Extracción de datos
 │       ├── transform.py         # Transformación de datos
 │       └── persist.py           # Persistencia de datos
-├── notebooks-eda/              # Análisis exploratorio
-│   └── eda_modelado_contratos.ipynb
+├── notebooks-eda/              # Análisis exploratorio (EDA)
+│   └── eda_contratos-pesca.ipynb
+├── docs/                        # Documentación
+│   ├── ETL.md                  # Documentación del pipeline ETL
+│   └── SETUP.md                # Guía de configuración
 ├── docker-compose.yml          # Configuración Docker
 ├── Makefile                    # Comandos automatizados
 └── pyproject.toml             # Dependencias y configuración
@@ -76,11 +79,11 @@ make transform
 make etl
 ```
 
-### Pipeline de datos
+### Pipeline ETL
 
-1. **Extracción**: Carga datos desde archivos CSV (2005-2011)
-2. **Transformación**: Limpia y procesa los datos
-3. **Persistencia**: Guarda en base de datos PostgreSQL
+1. **Extract**: Carga datos desde archivos CSV (2005-2011)
+2. **Transform**: Limpia y procesa los datos
+3. **Load**: Guarda en base de datos PostgreSQL
 
 **Ejecutar pipeline completo:**
 ```bash
@@ -114,13 +117,20 @@ El proyecto trabaja con datos de empleo en plantas de procesamiento pesquero:
 - **Poetry**: Gestión de dependencias
 - **Docker**: Containerización
 
-## 📈 Análisis
+## 📈 Análisis Exploratorio (EDA)
 
-El notebook `eda_modelado_contratos.ipynb` contiene:
-- Análisis exploratorio de datos
-- Visualizaciones
-- Modelado estadístico
-- Insights del sector pesquero
+El notebook [`eda_contratos-pesca.ipynb`](notebooks-eda/eda_contratos-pesca.ipynb) contiene:
+- Análisis exploratorio de datos completo
+- Visualizaciones 
+- Estadísticas descriptivas
+- Insights del sector pesquero chileno
+- Patrones temporales y tendencias
+
+## 📚 Documentación
+
+En la carpeta [`docs/`](docs/) encontrarás:
+- [`ETL.md`](docs/ETL.md): Documentación detallada del pipeline ETL
+- [`SETUP.md`](docs/SETUP.md): Guía de configuración del proyecto
 
 ## 🤝 Contribución
 
